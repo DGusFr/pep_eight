@@ -3,7 +3,8 @@ class FilaPrioritaria:
     fila = []
     clientes_atendidos = []
     senha_atual = None
-
+    #"->" indica o tipo de retorno da função em Python 3, ela é seguida pelo tipo de dado que a função retorna (None). 
+    # Isso ajuda a garantir que as funções retornem os tipos corretos de dados, facilitando a depuração e a leitura do código.
     def gera_senha_atual(self) -> None:
         self.senha_atual = f'PR{self.codigo}'
 
