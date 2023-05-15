@@ -27,8 +27,8 @@ from estatistica_detalhada import EstatisticaDetalhada
 # print(teste_fabrica.chama_cliente(10))
 
 fila = FabricaFila.pega_fila('prioritaria')
-fila.atualizafila()
-fila.atualizafila()
-fila.atualizafila()
+fila.atualiza_fila()
+fila.atualiza_fila()
+fila.atualiza_fila()
 print(fila.chama_cliente(5))
-print(fila.estatistica(EstatisticaResumida('20/03/2025', 1245)))
+
