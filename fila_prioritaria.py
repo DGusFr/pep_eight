@@ -1,6 +1,5 @@
 from typing import List
 
-
 class FilaPrioritaria:
     codigo: int = 0
     fila = []

@@ -11,7 +11,7 @@ from fila_prioritaria import FilaPrioritaria
 # print(fila_teste.chamacliente(10))
 
 fila_teste_2 = FilaPrioritaria()
-fila_teste_2.atualiza_fila()
+fila_teste_2.atualizafila()
 fila_teste_2.atualizafila()
 fila_teste_2.atualizafila()
 print(fila_teste_2.chamacliente(10))
