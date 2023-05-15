@@ -1,19 +1,15 @@
+from typing import Union
+from fila_base import FilaBase
+from constantes import CODIGO_PRIORITARIO
+from estatistica_resumida import EstatisticaResumida
+from estatistica_detalhada import EstatisticaDetalhada
 from typing import List
 
-class FilaPrioritaria:
-    codigo: int = 0
-    fila = []
-    clientes_atendidos = []
-    senha_atual: str = ""
+Classes = Union[EstatisticaResumida, EstatisticaDetalhada]
 
+class FilaPrioritaria(FilaBase):
     def gera_senha_atual(self) -> None:
-        self.senha_atual = f'PR{self.codigo}'
-
-    def reseta_fila(self) -> None:
-        if self.codigo >= 100:
-            self.codigo = 0
-        else:
-            self.codigo += 1
+        self.senha_atual = f'{CODIGO_PRIORITARIO}{self.codigo}'
 
     def chama_cliente(self, caixa: int) -> List[str]:
         display = []
@@ -28,19 +24,6 @@ class FilaPrioritaria:
 
         return display
 
-    def atualiza_fila(self) -> None:
-        self.reseta_fila()
-        self.gera_senha_atual()
-        self.fila.append(self.senha_atual)
+    def estatistica(self, retorna_estatistica: Classes) -> dict:
+        return retorna_estatistica.roda_estatistica(self.clientes_atendidos)
 
-    def estatistica(self, dia: str, agencia: str, flag: str) -> dict:
-        if flag != 'detail':
-            estatistica = {f'{agencia} - {dia}': len(self.clientes_atendidos)}
-        else:
-            estatistica = {}
-            estatistica['dia'] = dia
-            estatistica['agencia'] = agencia
-            estatistica['clientes atendidos'] = self.clientes_atendidos
-            estatistica['quantidade de clientes atendidos'] = len(self.clientes_atendidos)
-
-        return estatistica
