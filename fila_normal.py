@@ -12,10 +12,12 @@ class FilaNormal:
             self.codigo = 0
         else:
             self.codigo += 1
+
     def atualizafila(self)->None:
         self.resetafila()
         self.gerasenhaatual()
         self.fila.append(self.senhaatual)
+        
     def chamacliente(self, caixa:int)->str:
         clienteatual = self.fila.pop(0)
         self.clintesatendidos.append(clienteatual)
