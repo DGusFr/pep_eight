@@ -1,20 +1,22 @@
+from typing import List
+
+
 class FilaPrioritaria:
-    codigo = 0
+    codigo: int = 0
     fila = []
     clientes_atendidos = []
-    senha_atual = None
-    #"->" indica o tipo de retorno da função em Python 3, ela é seguida pelo tipo de dado que a função retorna (None). 
-    # Isso ajuda a garantir que as funções retornem os tipos corretos de dados, facilitando a depuração e a leitura do código.
+    senha_atual: str = ""
+
     def gera_senha_atual(self) -> None:
         self.senha_atual = f'PR{self.codigo}'
 
-    def reseta_fila(self)-> None:
+    def reseta_fila(self) -> None:
         if self.codigo >= 100:
             self.codigo = 0
         else:
             self.codigo += 1
 
-    def chama_cliente(self, caixa: int) -> None:
+    def chama_cliente(self, caixa: int) -> List[str]:
         display = []
         cliente_atual = self.fila.pop(0)
         display.append(f'Cliente: {cliente_atual} - Caixa {caixa}')
@@ -27,13 +29,12 @@ class FilaPrioritaria:
 
         return display
 
-
-    def atualiza_fila(self)-> None:
+    def atualiza_fila(self) -> None:
         self.reseta_fila()
         self.gera_senha_atual()
         self.fila.append(self.senha_atual)
-        
-    def estatistica(self, dia: str, agencia: str, flag:str)-> dict:
+
+    def estatistica(self, dia: str, agencia: str, flag: str) -> dict:
         if flag != 'detail':
             estatistica = {f'{agencia} - {dia}': len(self.clientes_atendidos)}
         else:
@@ -42,6 +43,5 @@ class FilaPrioritaria:
             estatistica['agencia'] = agencia
             estatistica['clientes atendidos'] = self.clientes_atendidos
             estatistica['quantidade de clientes atendidos'] = len(self.clientes_atendidos)
-            
+
         return estatistica
-        

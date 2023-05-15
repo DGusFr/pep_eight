@@ -1,4 +1,3 @@
-
 PEP 8 is a style guide for the Python programming language that provides a set of guidelines for writing code that is readable, consistent, and maintainable. 
 Developed by Guido van Rossum, Barry Warsaw, and Nick Coghlan, PEP 8 was created to help Python developers write code that is easy to read and understand, 
 making it more efficient to collaborate and maintain large software projects.
